@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>বর্ধমান বইমেলা | বর্ধমান অভিযান গোষ্ঠী</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Hind Siliguri', sans-serif; }
+        
+        body { background-color: #f0f2f5; color: #333; overflow-x: hidden; }
+
+        /* টপ ব্রেকিং নিউজ বার */
+        .news-ticker {
+            background: #ffcc00;
+            padding: 10px;
+            overflow: hidden;
+            white-space: nowrap;
+            font-weight: bold;
+            color: #000;
+            border-bottom: 2px solid #e6b800;
+        }
+        .ticker-text {
+            display: inline-block;
+            animation: ticker 25s linear infinite;
+        }
+        @keyframes ticker {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* হেডার ও লোগো সেকশন */
+        header {
+            background: linear-gradient(135deg, #1a2a6c, #2a4858);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 5px solid #ffcc00;
+        }
+
+        .logo-container { margin-bottom: 15px; }
+        .logo-container img {
+            max-width: 150px;
+            height: auto;
+            border-radius: 8px;
+            background: white;
+            padding: 5px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        header h1 { font-size: 2.8rem; margin-bottom: 5px; letter-spacing: 1px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        header p { font-size: 1.2rem; opacity: 0.9; }
+
+        /* নেভিগেশন */
+        .nav-container {
+            background: white;
+            padding: 15px 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+        .nav-buttons {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 0 15px;
+        }
+        .btn-custom {
+            padding: 12px 20px;
+            text-decoration: none;
+            color: #1a2a6c;
+            background: #f8f9fa;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            border: 2px solid #1a2a6c;
+            transition: all 0.3s ease;
+        }
+        .btn-custom:hover {
+            background: #1a2a6c;
+            color: white;
+            transform: translateY(-3px);
+        }
+        .btn-award { background: #ffcc00; border-color: #e6b800; color: #000; }
+
+        /* কন্টেইনার */
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+        .info-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border-top: 5px solid #1a2a6c;
+        }
+        .info-card h3 { color: #1a2a6c; margin-bottom: 15px; border-bottom: 3px solid #ffcc00; display: inline-block; }
+
+        /* ফ্লোটিং বাটন (সহযোগিতায়) - বাম দিকে */
+        .supporter-float {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background-color: #1a2a6c;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            border: none;
+            transition: 0.3s;
+        }
+        .supporter-float:hover { background-color: #2a4858; transform: scale(1.05); }
+
+        /* হোয়াটসঅ্যাপ - ডান দিকে */
+        .wa-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
+            font-size: 35px;
+            transition: 0.3s;
+        }
+        .wa-float:hover { background-color: #1ebd59; transform: scale(1.1); }
+
+        /* ফেসবুক ফ্লোটিং - হোয়াটসঅ্যাপের ঠিক উপরে */
+        .fb-float {
+            position: fixed;
+            bottom: 105px; /* হোয়াটসঅ্যাপের উচ্চতা + গ্যাপ */
+            right: 30px;
+            background-color: #1877F2;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
+            font-size: 30px;
+            transition: 0.3s;
+        }
+        .fb-float:hover { background-color: #145dbf; transform: scale(1.1); }
+
+        /* Modal (পপ-আপ) স্টাইল */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            overflow-y: auto;
+        }
+        .modal-content {
+            background-color: #fff;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 800px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.5);
+            position: relative;
+        }
+        .close-modal {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            font-size: 30px;
+            cursor: pointer;
+            color: #d63031;
+        }
+        .modal-header { color: #1a2a6c; border-bottom: 2px solid #ffcc00; margin-bottom: 20px; padding-bottom: 10px; }
+        .name-list { line-height: 1.8; text-align: justify; color: #2d3436; }
+        .advisor-section { margin-top: 20px; background: #f9f9f9; padding: 15px; border-left: 5px solid #ffcc00; border-radius: 5px; }
+
+        footer { background: #1a2a6c; color: white; padding: 50px 20px; text-align: center; margin-top: 60px; }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.2rem; }
+            .supporter-float { bottom: 20px; left: 20px; font-size: 0.8rem; padding: 10px 15px; }
+            .wa-float { bottom: 20px; right: 20px; width: 50px; height: 50px; font-size: 30px; }
+            .fb-float { bottom: 85px; right: 20px; width: 50px; height: 50px; font-size: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="news-ticker">
+        <div class="ticker-text">
+            📢 আমাদের অভিযান সাময়িকী চতুর্থ সংখ্যা অভিযানের অফিস থেকে সংগ্রহ করুন... ৪৯তম বর্ধমান বইমেলা স্টল বুকিং শুরু হবে... সাংস্কৃতিক অনুষ্ঠানের সূচী শীঘ্রই প্রকাশিত হবে... নতুন বইয়ের সম্ভার নিয়ে আপনাদের অপেক্ষায়...আমাদের Email:-gosthiavijan@gmail.com...
+        </div>
+    </div>
+
+    <header>
+        <div class="logo-container">
+            <img src="বইমেলা লোগো.jpeg" alt="বর্ধমান বইমেলা লোগো">
+        </div>
+        <h1>বর্ধমান বইমেলা</h1>
+        <p>পরিচালনায়ঃ বর্ধমান অভিযান গোষ্ঠী</p>
+        <p>📍 ১০৫ তিনকোনিয়া,জি.টি.রোড, বর্ধমান,৭১৩১০১</p>
+    </header>
+
+    <div class="nav-container">
+        <div class="nav-buttons">
+            <a href="news.html" class="btn-custom">বইমেলার খবর ও আপডেট</a>
+            <a href="gunijon.html" class="btn-custom">বর্ধমানের গুণীজন</a>
+            <a href="awards.html" class="btn-custom btn-award">🏆 পুরস্কার ও সম্মাননা</a>
+            <a href="history.html" class="btn-custom">বর্ধমান বইমেলার ইতিহাস</a>
+            <a href="membership.html" class="btn-custom">সদস্য পদ পুনর্নবীকরণের আবেদন</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>বইমেলা সম্পর্কে</h3>
+                <p>বর্ধমান বইমেলা আমাদের অঞ্চলের সাহিত্য ও সংস্কৃতির প্রাণের মেলা। ৫০০০-এর বেশি নতুন বইয়ের সম্ভার নিয়ে উৎসব ময়দান প্রাঙ্গণে আমরা মেতে উঠব আপনার অপেক্ষায়।</p>
+            </div>
+            <div class="info-card">
+                <h3>📅 সময় ও তারিখ</h3>
+                <p><strong>তারিখ:</strong> ২০ জানুয়ারি - ৩০ জানুয়ারি, ২০২৬</p>
+                <p><strong>সময়:</strong> প্রতিদিন দুপুর ২টো থেকে রাত ৮:৩০টা পর্যন্ত।</p>
+            </div>
+            <div class="info-card">
+                <h3>📍 মেলার স্থান</h3>
+                <p>উৎসব ময়দান, বিরহাটা, পূর্ব বর্ধমান। মেলা প্রাঙ্গণে পার্কিং ও প্রাথমিক চিকিৎসার সুব্যবস্থা রয়েছে।</p>
+            </div>
+        </div>
+    </div>
+
+    <button class="supporter-float" onclick="openSupporterModal()">
+        <i class="fas fa-hands-helping"></i> যাদের সহযোগিতায় বইমেলা সমৃদ্ধ
+    </button>
+
+    <a href="https://www.facebook.com/avijangosthi" class="fb-float" target="_blank" title="আমাদের ফেসবুক পেজ">
+        <i class="fab fa-facebook-f"></i>
+    </a>
+
+    <a href="https://wa.me/918016957008" class="wa-float" target="_blank" title="হোয়াটসঅ্যাপে যোগাযোগ করুন">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <div id="supporterModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeSupporterModal()">&times;</span>
+            <h2 class="modal-header">যাদের সহযোগিতায় বর্ধমান বইমেলা সমৃদ্ধ</h2>
+            <div class="name-list">
+                স্বপন দেবনাথ (মন্ত্রী, পশ্চিমবঙ্গ সরকার), মলয় ঘটক (মন্ত্রী, পশ্চিমবঙ্গ সরকার), গৌতম চন্দ্র (উপাচার্য, বর্ধমান বিশ্ববিদ্যালয়), সুরিন্দর সিং আলু ওয়ালিয়া (সাংসদ), সুনীল মণ্ডল (সাংসদ), শ্যামাপ্রসন্ন লোহার (সভাধিপতি, পূর্ব বর্ধমান জেলা পরিষদ), গার্গী নাহা (সহ-সভাধিপতি, পূর্ব বর্ধমান জেলা পরিষদ), খোকন দাস (বিধায়ক), নিশীথ মালিক (বিধায়ক), কাকলি তা গুপ্ত (চেয়ারপার্সন, বি.ডি.এ), আইনুল হক (ভাইস চেয়ারম্যান, বি.ডি.এ), পরেশ চন্দ্র সরকার (পৌরপতি, বর্ধমান পৌরসভা), মৌসুমী দাস (উপ পৌরপতি, বর্ধমান পৌরসভা), অতিরিক্ত জেলাশাসক (সাধারণ), অতিরিক্ত জেলাশাসক (উন্নয়ন), অতিরিক্ত জেলাশাসক (জেলা পরিষদ), অতিরিক্ত জেলাশাসক (শিক্ষা), মহকুমা শাসক (উত্তর), মহকুমা শাসক (দক্ষিণ), আমন দীপ (পুলিশ সুপার), অতিরিক্ত পুলিশ সুপার, ডি.এস.পি(সদর), ডি.এস.পি (ডি.আই.বি.), ডি.এস.পি (এস.ই.বি), ডি.এস.পি (এ.পি), ডি.এস.পি (ডি.এন.টি), এস.ডি.পি.ও., আই.সি (বর্ধমান সদর), আই.সি (বর্ধমান মহিলা থানা), জেলা গ্রন্থাগার আধিকারিক (পূর্ব বর্ধমান), জেলা গ্রন্থাকারিক, জেলা তথ্য ও সংস্কৃতি আধিকারিক, জয় রঞ্জন সেন (সচিব, বর্ধমান পৌরসভা), তাপস মাকড়, উজ্জ্বল প্রামানিক, অরূপ দাস, শিখা আদিত্য, উত্তম সেনগুপ্ত, কানাই মুখার্জি, সনৎ বক্সী, অরিন্দম কোনার, জোতির্ময় ভট্টাচার্য, অমল হালদার, বিনয় কৃষ্ণ দাস, জনার্দন রায়, তাপস সরকার, সন্দীপ নন্দী, শ্যামল রায়, আশীষ সরকার, কাকলি মজুমদার, সুপ্রকাশ চৌধুরী, সাবর্ণ দে, সুমন মুখার্জি, Mohammad K. Abedin, কাশীনাথ গাঙ্গুলী এবং উদয় সংঘের সদস্যবৃন্দ ও বর্ধমানের সংস্কৃতিপ্রেমি ব্যক্তিগণ।
+            </div>
+
+            <div class="advisor-section">
+                <p><strong>প্রধান উপদেষ্টা :</strong> আয়েসা রানি এ (জেলা সমাহর্তা)</p>
+                <p><strong>উপদেষ্টাবৃন্দ :</strong> চন্দ্রচূড় মুখোপাধ্যায়, বারিদবরণ ঘোষ, সঞ্জীব চক্রবর্তী, নীলা কর, সমর মুখোপাধ্যায়, দেবেশ ঠাকুর, শ্যামল বরন সাহা, ডক্টর সুমিত ব্যানার্জি, ডক্টর আশিস রঞ্জন ব্যানার্জি, ডক্টর তারকনাথ ব্যানার্জি, সর্বজিৎ যশ, সন্তোষ সাহা শিকদার, অনিক সাহা, অজন্তা সাহা, স্বপ্নকমল সরকার, অরবিন্দ সরকার।</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p><strong>বর্ধমান বইমেলা ২০২৬</strong></p>
+        <p>&copy; ২০২৬ বইমেলা কমিটি | সর্বস্বত্ব সংরক্ষিত</p>
+        <p style="font-size: 0.8rem; opacity: 0.7; margin-top: 10px;">ডিজাইন ও ডেভেলপমেন্ট: অভিযান আইটি সেল</p>
+    </footer>
+
+    <script>
+        function openSupporterModal() {
+            document.getElementById('supporterModal').style.display = 'block';
+            document.body.style.overflow = 'hidden'; 
+        }
+
+        function closeSupporterModal() {
+            document.getElementById('supporterModal').style.display = 'none';
+            document.body.style.overflow = 'auto'; 
+        }
+
+        window.onclick = function(event) {
+            let modal = document.getElementById('supporterModal');
+            if (event.target == modal) {
+                closeSupporterModal();
+            }
+        }
+    </script>
+
+</body>
+</html>
